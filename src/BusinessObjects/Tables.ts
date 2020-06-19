@@ -1,0 +1,3 @@
+enum Tables {
+    Log="Agentenlog"
+}
