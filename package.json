@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --build src && cd build && clasp push"
+    "gsuiteScriptId": "copyfiles -u 2 src/OfficeAbstraction/.clasp.json build",
+    "gsuiteConfiguration": "copyfiles -u 2 src/OfficeAbstraction/appsscript.json build",
+    "build": "rm -rfv build/ && npm run gsuiteConfiguration && npm run gsuiteScriptId && tsc --build src && cd build && clasp push",
+    "push-office-one": "tsc --build src && npm run config-office-one && cd src/office-one-team && clasp push"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   "homepage": "https://github.com/patrickweiss/office-one#readme",
   "dependencies": {
     "@types/google-apps-script": "^1.0.14",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "copyfiles": "^2.1.1"
   }
 }
